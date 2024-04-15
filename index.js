@@ -41,7 +41,11 @@ app.post('/agregar', async (req, res) => {
         console.error('Error al escribir en el archivo:', error);
         return res.status(500).json({ error: 'Error al escribir en el archivo' });
     }
+});
 
-    
-
-})
+// Para obtener Deportes, leera deportes.json 
+app.get('/deportes', async (req, res) => {
+    const parsedData = JSON.parse(await fs.readFile('deportes.json', 'utf8'));
+    const deportes = parsedData.deportes || [];
+    res.json({ deportes });
+});
