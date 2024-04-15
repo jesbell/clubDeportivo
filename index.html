@@ -61,7 +61,7 @@
           <label class="col-sm-2 col-form-label">Precio</label>
 
           <div class="col-sm-10">
-            <input id="precioModal" type="text" class="form-control" precio="precio" />
+            <input id="precioModal" type="text" class="form-control" name="precio" />
           </div>
         </div>
 
@@ -128,7 +128,7 @@
       let nombre = $('#nombreModal').val()
       let precio = $('#precioModal').val()
       axios.get(`/editar?nombre=${nombre}&precio=${precio}`).then((data) => {
-        alert(data.data)
+        alert(data.data.message);
         getData()
       })
       $('#exampleModal').modal('hide')

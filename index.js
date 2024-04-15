@@ -49,3 +49,21 @@ app.get('/deportes', async (req, res) => {
     const deportes = parsedData.deportes || [];
     res.json({ deportes });
 });
+
+// ruta para modificar precio
+app.get('/editar', async (req, res) => {
+    const { nombre, precio } = req.query;
+    try {
+        const parsedData = JSON.parse(await fs.readFile('deportes.json', 'utf8'));
+        let deporte = parsedData.deportes.find(d => d.nombre === nombre);
+
+        deporte.precio = precio;
+
+        await fs.writeFile('deportes.json', JSON.stringify(parsedData, null, 2));
+        res.json({ message: 'Precio actualizado correctamente' });
+    } catch (error) {
+        console.error('Error al editar el precio:', error);        
+    }
+
+    
+});
