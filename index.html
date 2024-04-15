@@ -118,7 +118,7 @@
       let nombre = $('#nombre').val()
       let precio = $('#precio').val()
       axios.post(`/agregar?nombre=${nombre}&precio=${precio}`).then((data) => {
-        alert(data.data)
+        alert(data.data.message);
         getData()
       })
       $('#exampleModal').modal('hide')
