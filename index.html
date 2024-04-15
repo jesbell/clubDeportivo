@@ -27,7 +27,7 @@
         </div>
       </div>
   
-      <button class="btn btn-info" onclick="agregar()">Agregar</button>
+      <button type="button" class="btn btn-info" onclick="agregar()">Agregar</button>
     </form>
   </div>
   
@@ -117,7 +117,7 @@
     function agregar() {
       let nombre = $('#nombre').val()
       let precio = $('#precio').val()
-      axios.post(`/agregar?nombre=${nombre}&precio=${precio}`).then((data) => {
+      axios.post('/agregar', { nombre, precio }).then((data) => {
         alert(data.data.message);
         getData()
       })

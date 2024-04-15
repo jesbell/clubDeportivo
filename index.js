@@ -49,8 +49,7 @@ app.post('/agregar', async (req, res) => {
         // Escribe en el archivo deportes.json lo que esta en deportes, y le da un formato.
         await fs.writeFile('deportes.json', JSON.stringify({deportes}, null, 2));
         // Envía una respuesta JSON al cliente
-        //res.json({ message: 'Deporte agregado correctamente' }); 
-        res.redirect('/');
+        res.json({ message: 'Deporte agregado correctamente' }); 
     } catch (error) {
         console.error('Error al escribir en el archivo:', error);
     }
@@ -58,10 +57,17 @@ app.post('/agregar', async (req, res) => {
 
 // Para obtener Deportes, leera deportes.json 
 app.get('/deportes', async (req, res) => {
-    // Lee el archivo deportes.json, parsea su contenido
-    const parsedData = JSON.parse(await fs.readFile('deportes.json', 'utf8'));
-    const deportes = parsedData.deportes || [];
-    res.json({ deportes });
+    try {
+        // Lee el archivo deportes.json, parsea su contenido
+        const parsedData = JSON.parse(await fs.readFile('deportes.json', 'utf8'));
+        const deportes = parsedData.deportes || [];
+        res.json({ deportes });
+        
+    } catch (error) {
+        console.error('Error al leer el archivo:', error);
+    }
+
+    
 });
 
 // ruta para modificar precio
