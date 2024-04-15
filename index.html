@@ -136,7 +136,7 @@
   
     function eliminar(nombre) {
       axios.get(`/eliminar?nombre=${nombre}`).then((data) => {
-        alert(data.data)
+        alert(data.data.message);
         getData()
       })
       $('#exampleModal').modal('hide')

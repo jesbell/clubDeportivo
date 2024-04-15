@@ -63,7 +63,22 @@ app.get('/editar', async (req, res) => {
         res.json({ message: 'Precio actualizado correctamente' });
     } catch (error) {
         console.error('Error al editar el precio:', error);        
-    }
+    }    
+});
 
-    
+
+// ruta para eliminar precio
+app.get('/eliminar', async (req, res) => {
+    const { nombre } = req.query;
+    try {
+        let parsedData = JSON.parse(await fs.readFile('deportes.json', 'utf8'));
+        
+        // Se utiliza la función filter para excluir el deporte a eliminar 
+        parsedData.deportes = parsedData.deportes.filter(d => d.nombre !== nombre);
+
+        await fs.writeFile('deportes.json', JSON.stringify(parsedData, null, 2));
+        res.json({ message: 'Deporte eliminado correctamente' });
+    } catch (error) {
+        console.error('Error al eliminar el deporte:', error);        
+    }    
 });
