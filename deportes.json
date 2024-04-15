@@ -1,0 +1,28 @@
+{
+  "deportes": [
+    {
+      "nombre": "basquet",
+      "precio": "77777"
+    },
+    {
+      "nombre": "tennis",
+      "precio": "147852"
+    },
+    {
+      "nombre": "futbol",
+      "precio": "123456"
+    },
+    {
+      "nombre": "patinaje en hielo",
+      "precio": "456789"
+    },
+    {
+      "nombre": "atletismo",
+      "precio": "789123"
+    },
+    {
+      "nombre": "gimnasia",
+      "precio": "123456"
+    }
+  ]
+}
